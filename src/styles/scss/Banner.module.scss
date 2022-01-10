@@ -13,16 +13,16 @@ $breakpoint-tablet: 768px;
 
     .bannerContents{
         margin-left: 1.5rem;
-        padding-top: 10rem;       
+        padding-top: 10rem;
 
-       .movieTitle{           
+       .movieTitle{
            font-size:3rem;
            font-weight: 800;
            padding-bottom: 0.3rem;
        }
 
-       .bannerButtons{           
-         
+       .bannerButtons{
+
         button{
            border: none;
            outline: none;
@@ -38,7 +38,7 @@ $breakpoint-tablet: 768px;
                background-color: white;
                transition: all 0.2s;
            }
-        }         
+        }
 
        }
 
