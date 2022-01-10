@@ -18,13 +18,12 @@ export default function Nav() {
   }, []);
 
   const navBarColor = [styles.navContent, navBar ? styles.navBackgroundColor : null];
-  console.log(navBarColor);
 
   return (
     <div className={navBarColor.join(' ')}>
       <img
         className={styles.logo}
-        src="https://www.freepnglogos.com/uploads/netflix-logo-circle-png-5.png"
+        src="https://www.edigitalagency.com.au/wp-content/uploads/Netflix-logo-red-black-png.png"
         alt=""
       />
       <img
