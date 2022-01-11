@@ -23,7 +23,7 @@ export default function Nav() {
     <div className={navBarColor.join(' ')}>
       <img
         className={styles.logo}
-        src="https://www.edigitalagency.com.au/wp-content/uploads/Netflix-logo-red-black-png.png"
+        src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png"
         alt=""
       />
       <img
