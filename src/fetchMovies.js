@@ -1,5 +1,7 @@
+// This would be added in the process.env
 const API_KEY = 'dfc195932ce0b7dc277a45c02a8a3a44';
 
+// Object containing api paths to fetch different movie genres
 const getMovieLists = {
   fetchTrending: `/trending/all/week?api_key=${API_KEY}`,
   fetchNextFlixOriginals: `/discover/tv?api_key=${API_KEY}&with_networks=213`,
