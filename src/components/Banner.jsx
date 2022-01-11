@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../styles/scss/Banner.module.scss';
+import movieDBInstance from '../movieDB';
+import getMovieLists from '../fetchMovies';
 
 export default function Banner() {
+  // State to show movie in the banner
+  const [movie, setMovie] = useState();
+  // Fetch movie from the database
+  useEffect(() => {
+    const fetchMovie = async () => {
+      const request = await movieDBInstance.get(getMovieLists.fetchTopRated);
+      setMovie(request.data.results[Math.floor(Math.random() * request.data.results.length - 1)]);
+    };
+    fetchMovie();
+  }, []);
   // Function to limit description to n letters
   const truncate = (string, n) => {
     if (string) {
@@ -16,21 +28,25 @@ export default function Banner() {
     <header
       className={styles.banner}
       style={{
-        backgroundPosition: 'center center',
-        backgroundImage: 'url("https://i.imgur.com/e1hLQ2m.png")',
+        backgroundPosition: 'top center',
+        backgroundImage: movie ? `url("https://image.tmdb.org/t/p/original${movie.backdrop_path}")` : null,
         backgroundSize: 'cover',
       }}
     >
       <div className={styles.bannerContents}>
-        <h1 className={styles.movieTitle}>Movie Name</h1>
+        <h1 className={styles.movieTitle}>
+          {movie ? (movie.title || movie.name || movie.original_name)
+            : null}
+
+        </h1>
         <div className={styles.bannerButtons}>
           <button type="button">Play</button>
           <button type="button">My List</button>
         </div>
         <h1 className={styles.movieDescription}>
           {truncate(
-            'Commodo ipsum id cupidatat sit do magna excepteur tempor sint fugiat ea. Ea sint duis deserunt laboris tempor sint fugiat ea. Ea sint duis deserunt laboris',
-            10,
+            movie ? movie.overview : null,
+            300,
           )}
         </h1>
       </div>
