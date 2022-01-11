@@ -26,32 +26,35 @@ export default function Banner() {
     return null;
   };
   return (
-    <header
-      className={styles.banner}
-      style={{
-        backgroundPosition: 'top center',
-        backgroundImage: movie ? `url("https://image.tmdb.org/t/p/original${movie.backdrop_path}")` : null,
-        backgroundSize: 'cover',
-      }}
-    >
-      <div className={styles.bannerContents}>
-        <h1 className={styles.movieTitle}>
-          {movie ? (movie.title || movie.name || movie.original_name)
-            : null}
+    movie
+      ? (
+        <header
+          className={styles.banner}
+          style={{
+            backgroundPosition: 'top center',
+            backgroundImage: `url("https://image.tmdb.org/t/p/original${movie.backdrop_path}")`,
+            backgroundSize: 'cover',
+          }}
+        >
+          <div className={styles.bannerContents}>
+            <h1 className={styles.movieTitle}>
+              {movie.title || movie.name || movie.original_name}
 
-        </h1>
-        <div className={styles.bannerButtons}>
-          <button type="button">Play</button>
-          <button type="button">My List</button>
-        </div>
-        <h1 className={styles.movieDescription}>
-          {truncate(
-            movie ? movie.overview : null,
-            300,
-          )}
-        </h1>
-      </div>
-      <div className={styles.bannerFade} />
-    </header>
+            </h1>
+            <div className={styles.bannerButtons}>
+              <button type="button">Play</button>
+              <button type="button">My List</button>
+            </div>
+            <h1 className={styles.movieDescription}>
+              {truncate(
+                movie.overview,
+                300,
+              )}
+            </h1>
+          </div>
+          <div className={styles.bannerFade} />
+        </header>
+      )
+      : null
   );
 }
