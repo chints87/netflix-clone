@@ -6,10 +6,11 @@ import getMovieLists from '../fetchMovies';
 export default function Banner() {
   // State to show movie in the banner
   const [movie, setMovie] = useState();
-  // Fetch movie from the database
+  // Fetch movie from the database upon mounting
   useEffect(() => {
     const fetchMovie = async () => {
       const request = await movieDBInstance.get(getMovieLists.fetchTopRated);
+      // Update state upon receiving data
       setMovie(request.data.results[Math.floor(Math.random() * request.data.results.length - 1)]);
     };
     fetchMovie();
