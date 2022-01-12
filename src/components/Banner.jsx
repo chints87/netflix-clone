@@ -9,7 +9,7 @@ export default function Banner() {
   // Fetch movie from the database upon mounting
   useEffect(() => {
     const fetchMovie = async () => {
-      const request = await movieDBInstance.get(getMovieLists.fetchTopRated);
+      const request = await movieDBInstance.get(getMovieLists[3].path);
       // Update state upon receiving data
       setMovie(request.data.results[Math.floor(Math.random() * request.data.results.length - 1)]);
     };
@@ -46,10 +46,7 @@ export default function Banner() {
               <button type="button">My List</button>
             </div>
             <h1 className={styles.movieDescription}>
-              {truncate(
-                movie.overview,
-                300,
-              )}
+              {truncate(movie.overview, 300)}
             </h1>
           </div>
           <div className={styles.bannerFade} />
