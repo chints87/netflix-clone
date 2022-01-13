@@ -1,18 +1,26 @@
 import React, { useRef } from 'react';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { firebaseApp } from '../firebase';
 import styles from '../styles/scss/SignIn.module.scss';
 
 export default function SignIn() {
   const emailRef = useRef();
   const passwordRef = useRef();
+  // Use firebase auth functionality
+  const auth = getAuth(firebaseApp);
   // Function runs when users wants to sign up
   const register = (e) => {
     e.preventDefault();
-    console.log('in here register');
+    createUserWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
+      .then((userAuth) => console.log(userAuth))
+      .catch((error) => console.log(error.message));
   };
   // Function runs when users wants to sign in
   const signIn = (e) => {
     e.preventDefault();
-    alert('in sign in');
+    signInWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
+      .then((userAuth) => console.log(userAuth))
+      .catch((error) => console.log(error.message));
   };
   return (
     /* Create form that takes in user email and password to sign in or register */
