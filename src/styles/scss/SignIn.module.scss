@@ -1,0 +1,85 @@
+.signUp{
+    margin: 0 auto;
+    padding: 50px;
+    width: 80%;
+    max-width: 400px;
+    height: max-content;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.90);
+    
+
+    h2{
+        margin-bottom: 30px;
+        color: white;
+    }
+
+    input{
+        width: 100%;
+        padding: 20px;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        outline: none;
+        background-color: rgb(44, 43, 43);
+        color: black;
+        border: none;
+        border-radius: 2px;
+    }
+
+    button{
+        display: block;
+        width: 100%;
+        padding: 10px 20px;
+        border-radius: 2px;
+        background-color: red;
+        color: white;
+        border: none;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin: 0 auto;
+        margin-top:30px;
+        
+    }
+
+    .signInOptions{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 20px;
+        color: grey;
+
+        .rememberMe{
+            display: block;
+            white-space: nowrap;
+
+            input{
+                vertical-align: middle;
+                position: relative;
+                bottom: 1px;
+            }
+
+            span{
+                vertical-align: middle;
+            }
+            
+        }
+
+        p:hover{
+            color:white;
+            cursor: pointer;
+        }
+    }
+
+    .signUpText{
+        color: grey;
+        margin-top: 20px;
+        
+        .signUpLink{
+            color: white;
+            cursor: pointer;            
+
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+}
