@@ -1,0 +1,41 @@
+.categoryRow {
+  margin-left: 1.2rem;
+  background-color: #111;
+  color: white;
+}
+
+.categoryRow .movies {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 1.5rem;
+}
+
+.categoryRow .movies::-webkit-scrollbar {
+  display: none;
+}
+
+.categoryRow .movies .moviePoster {
+  max-height: 100px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 100%;
+  margin-right: 0.75rem;
+  -webkit-transition: -webkit-transform 450ms;
+  transition: -webkit-transform 450ms;
+  transition: transform 450ms;
+  transition: transform 450ms, -webkit-transform 450ms;
+}
+
+.categoryRow .movies .moviePoster:hover {
+  -webkit-transform: scale(1.08);
+          transform: scale(1.08);
+  opacity: 1;
+}
+
+.categoryRow .movies .moviePosterHeight {
+  max-height: 150px;
+  width: 100%;
+}

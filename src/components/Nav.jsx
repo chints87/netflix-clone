@@ -1,9 +1,11 @@
 /* eslint-disable no-undef */
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from '../styles/scss/Nav.module.scss';
 
 export default function Nav() {
   const [navBar, setNavBar] = useState(false);
+  const navigate = useNavigate();
 
   const navBarTransition = () => {
     if (window.scrollY > 100) {
@@ -30,6 +32,9 @@ export default function Nav() {
         className={styles.userIcon}
         src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
         alt=""
+        onClick={() => navigate('/login')}
+        onKeyUp={() => navigate('/login')}
+        role="presentation"
       />
     </div>
   );
