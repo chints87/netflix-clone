@@ -3,7 +3,7 @@ const API_KEY = 'dfc195932ce0b7dc277a45c02a8a3a44';
 
 // Object containing api paths to fetch different movie genres
 // isLarge is added to give an option to choose either a poster or
-// or backdrop images available in the backend
+// or backdrop images available in the api
 const getMovieLists = [
   {
     title: 'NETFLIX ORIGINALS',
