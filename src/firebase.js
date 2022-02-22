@@ -2,13 +2,13 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyB-atyHB0i6MdoN85Lnkag2zvt2PwDKb-E',
-  authDomain: 'netflix-clone-fe5ad.firebaseapp.com',
-  projectId: 'netflix-clone-fe5ad',
-  storageBucket: 'netflix-clone-fe5ad.appspot.com',
-  messagingSenderId: '260571828051',
-  appId: '1:260571828051:web:b046d701516273a7d39ba6',
-  measurementId: 'G-XMY5DXVVNZ',
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_API_ID,
+  measurementId: process.env.REACT_APP_FIRBASE_MEASUREMENT_ID,
 };
 
 // Initialize netflix-clone app on firebase
