@@ -15,7 +15,7 @@ export default function Banner() {
     };
     fetchMovie();
   }, []);
-  // Function to limit description to n letters
+  // Function limits description to n letters
   const truncate = (string, n) => {
     if (string) {
       if (string.length > n) {
