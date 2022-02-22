@@ -23,8 +23,6 @@ export default function MovieRow({ categoryTitle, path, isLarge }) {
   /* This is a constant that adds an additional class style if condition is met */
   const moviePoster = [styles.moviePoster, isLarge ? styles.moviePosterHeight : null];
 
-  console.log(movieList);
-
   return (
     movieList
       ? (
