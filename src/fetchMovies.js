@@ -1,5 +1,5 @@
 // This would be added in the process.env
-const API_KEY = 'dfc195932ce0b7dc277a45c02a8a3a44';
+const API_KEY = process.env.REACT_APP_MOVIEDB_API_KEY;
 
 // Object containing api paths to fetch different movie genres
 // isLarge is added to give an option to choose either a poster or
