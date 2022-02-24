@@ -11,16 +11,16 @@ export default function SignIn() {
   // Function runs when users wants to sign up
   const register = (e) => {
     e.preventDefault();
-    createUserWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
-      .then((userAuth) => console.log(userAuth))
-      .catch((error) => console.log(error.message));
+    createUserWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value);
+    // .then((userAuth) => console.log(userAuth))
+    // .catch((error) => console.log(error.message));
   };
   // Function runs when users wants to sign in
   const signIn = (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
-      .then((userAuth) => console.log(userAuth))
-      .catch((error) => console.log(error.message));
+    signInWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value);
+    // .then((userAuth) => console.log(userAuth))
+    // .catch((error) => console.log(error.message));
   };
   return (
     /* Create form that takes in user email and password to sign in or register */
