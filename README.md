@@ -78,4 +78,83 @@ export default db;
 
 
 
+## Setup Stripe for creating subscription plans
+
+1) Setup an account
+2) Make sure you are in test mode
+3) Look where the API keys are located
+4) Create a restricted key, which permissions as required, shown in the firebase stripe extension setup 
+
+
+## Setup Stripe extension on firebase
+[Refer to this link](https://github.com/stripe/stripe-firebase-extensions/blob/master/firestore-stripe-payments/POSTINSTALL.md)
+
+1) Go to extensions in the firebase console
+2) In the menu list, click on extensions
+3) Choose stripe integrations
+4) Enable secret key cloud manager
+5) Before the install, in the setup add Stripe restricted key(details are shown below the input box). Refer to point 4 
+   in 'Setup Stripe....plans'.
+6) Leave secret key for webhook empty
+7) Install stripe.
+
+#### Add rules to your database about what knd of users can access, read and write
+```
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /customers/{uid} {
+      allow read: if request.auth.uid == uid;
+
+      match /checkout_sessions/{id} {
+        allow read, write: if request.auth.uid == uid;
+      }
+      match /subscriptions/{id} {
+        allow read: if request.auth.uid == uid;
+      }
+      match /payments/{id} {
+        allow read: if request.auth.uid == uid;
+      }
+    }
+
+    match /products/{id} {
+      allow read: if true;
+
+      match /prices/{id} {
+        allow read: if true;
+      }
+
+      match /tax_rates/{id} {
+        allow read: if true;
+      }
+    }
+  }
+}
+```
+
+### Setup webhook so that changes in stripe can triggers updates in firebase store
+
+1) Copy the URL extension from firebase and go to your Stripe account and go to webhooks to add the URL as an endpoint.
+2) Select events that webhook should listen to.
+3) Add the end point. 
+4) From Stripe copy signing secret key.
+5) Copy the key into the secret webhook key in config of firebase. 
+6) Save the secret key and save the configuration.
+
+### Add Products
+
+1) In the Stripe dashboard, add the different subscription plans and their pricing
+2) Then go to settings, and in the customer portal enable settings to 
+   change subscription or cancel plans and add the products that were just created
+
+### Branding 
+
+### Go to firestore
+
+1) Refresh the database, and you should see the newly created products show up in the firebase db.
+2) Sign up a new user. Refresh the database and you should see the customer collection created 
+   with details of this newly created user. 
+
+###
+
 
