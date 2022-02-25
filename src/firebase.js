@@ -16,36 +16,36 @@ export const firebaseApp = firebase.initializeApp(firebaseConfig);
 // Connect to db
 const db = firebaseApp.firestore();
 
-// Create a user in the firestore db
-export const createUser = async (userAuth) => {
-  // If the user is logged out then don't do anything
-  if (!userAuth) {
-    return null;
-  }
+// // Create a user in the firestore db
+// export const createUser = async (userAuth) => {
+//   // If the user is logged out then don't do anything
+//   if (!userAuth) {
+//     return null;
+//   }
 
-  // Check if user exists in the database
-  const userRef = db.doc(`users/${userAuth.uid}`);
+//   // Check if user exists in the database
+//   const userRef = db.doc(`users/${userAuth.uid}`);
 
-  // Make a call to get user from the db
-  const snapShot = await userRef.get();
+//   // Make a call to get user from the db
+//   const snapShot = await userRef.get();
 
-  // If the user does not exist in the db,
-  // then create a user
-  if (!snapShot.exists) {
-    const { email } = userAuth;
-    const createdAt = new Date();
+//   // If the user does not exist in the db,
+//   // then create a user
+//   if (!snapShot.exists) {
+//     const { email } = userAuth;
+//     const createdAt = new Date();
 
-    try {
-      await userRef.set({
-        email,
-        createdAt,
-      });
-    } catch (error) {
-      console.log('error', error);
-    }
-  }
+//     try {
+//       await userRef.set({
+//         email,
+//         createdAt,
+//       });
+//     } catch (error) {
+//       console.log('error', error);
+//     }
+//   }
 
-  return userRef;
-};
+//   return userRef;
+// };
 
 export default db;

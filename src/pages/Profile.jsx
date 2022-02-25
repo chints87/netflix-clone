@@ -4,6 +4,7 @@ import { getAuth } from 'firebase/auth';
 import { firebaseApp } from '../firebase';
 import styles from '../styles/scss/Profile.module.scss';
 import Nav from '../components/Nav';
+import Plans from '../components/Plans';
 
 import { selectUser } from '../features/userSlice';
 
@@ -25,28 +26,7 @@ export default function Profile() {
             <h3>{user.email}</h3>
             <div className={styles.profilePlans}>
               <h3>Plans</h3>
-              <h4>Renewal</h4>
-              <div className={styles.plans}>
-                <div className={styles.planDescription}>
-                  <p>Netflix Basic</p>
-                  <p>480p</p>
-                </div>
-                <button type="button" className={styles.suscribeButton}>Subscribe</button>
-              </div>
-              <div className={styles.plans}>
-                <div className={styles.planDescription}>
-                  <p>Netflix Standard</p>
-                  <p>1000p</p>
-                </div>
-                <button type="button" className={styles.suscribeButton}>Subscribe</button>
-              </div>
-              <div className={styles.plans}>
-                <div className={styles.planDescription}>
-                  <p>NetFlix Premium</p>
-                  <p>4k</p>
-                </div>
-                <button type="button" className={styles.suscribeButton}>Subscribe</button>
-              </div>
+              <Plans />
 
               <button type="button" onClick={() => auth.signOut()}>Sign Out</button>
             </div>

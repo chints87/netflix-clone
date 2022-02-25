@@ -7,7 +7,7 @@ import HomeScreen from './pages/HomeScreen';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import './App.css';
-import { firebaseApp, createUser } from './firebase';
+import { firebaseApp } from './firebase';
 
 function App() {
   /* Getting the user property from the user object from the state object */
@@ -22,7 +22,6 @@ function App() {
     /* Listener on auth module in firebase that tracks auth state change. It checks the user state
      of the auth in the firebase project */
     const unsuscribe = auth.onAuthStateChanged(async (userAuth) => {
-      createUser(userAuth);
       if (userAuth) {
         dispatch(login({
           uid: userAuth.uid,
