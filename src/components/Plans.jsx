@@ -10,6 +10,9 @@ export default function Plans() {
       .where('active', '==', true)
       .get()
       .then((querySnapshot) => {
+        // Create an object of the products with its details
+        // and then refer to price collection, and for each of
+        // prices/price add details
         const productsDB = {};
         querySnapshot.forEach(async (prodDoc) => {
           productsDB[prodDoc.id] = prodDoc.data();
@@ -25,18 +28,25 @@ export default function Plans() {
       });
   }, []);
 
-  console.log(products);
   return (
-    <div className={styles.plan}>
+    <>
+      {/* An array will contain arrays of the products. The map
+          function takes each array with the first element as productID
+          and the second as the product data */}
       {Object.entries(products).map(([productId, productData]) => (
-        <div key={productId}>
-          <p>{productData.name}</p>
-          <p>{productData.description}</p>
-          <button type="button">Subscribe</button>
+        <div key={productId} className={styles.plan}>
+          <div className={styles.productDescription}>
+            <p>{productData.name}</p>
+            <p>{productData.description}</p>
+          </div>
+          <div className={styles.suscribeButton}>
+            <button type="button">Subscribe</button>
+          </div>
+
         </div>
       ))}
 
-    </div>
+    </>
 
   );
 }

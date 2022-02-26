@@ -1,4 +1,42 @@
 .plan{
     display: flex;
     flex-direction: column;
+    margin: 1rem 0;
+    justify-content: space-between;
+    align-items: center;
+    flex-basis: 100px;
+
+    @media screen and (min-width: 768px){
+        flex-direction: row;
+    }
+
+    .productDescription{
+        display: flex;
+        flex-direction: column;
+  
+
+        @media screen and (min-width: 768px){
+            width: 80%;
+            margin: 0;
+        }
+        
+        p {
+            width: max-content;
+            font-weight: 500;
+            margin: 0 auto;   
+            
+            @media screen and (min-width: 768px){
+                margin-left: 0;
+            }
+        }
+    }
+
+    .suscribeButton{
+        width: 80%;
+
+        @media screen and (min-width: 768px){
+            flex-basis: 200px;
+        }
+    }
+
 }
