@@ -141,7 +141,7 @@ service cloud.firestore {
 5) Copy the key into the secret webhook key in config of firebase. 
 6) Save the secret key and save the configuration.
 
-### Add Products
+### Add product details and prices
 
 1) In the Stripe dashboard, add the different subscription plans and their pricing
 2) Then go to settings, and in the customer portal enable settings to 
