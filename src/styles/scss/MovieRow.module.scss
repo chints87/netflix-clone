@@ -1,3 +1,5 @@
+$breakpoint-tablet: 768px;
+
 .categoryRow{
     margin-left: 1.2rem;
     background-color: #111;
@@ -6,12 +8,28 @@
     .movies{
         display: flex;
         overflow-y: hidden;
-        overflow-x: scroll;
         padding: 1.5rem;
 
         &::-webkit-scrollbar{
-            display: none;
+            overflow-x: scroll;
+        }    
+
+        @media screen and (min-width: $breakpoint-tablet) {
+            &::-webkit-scrollbar{
+                height: 7px;
+                background-color: rgb(44, 44, 44);
+    
+            }
+    
+            &::-webkit-scrollbar-thumb{
+                background-color: rgb(73, 73, 73);
+                max-width: 20px;
+                border-radius: 100px;
+                background-clip: border-box;
+            }
         }
+
+      
 
         .movieDetails{
             position: relative;            
