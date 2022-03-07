@@ -31,8 +31,35 @@
         }
     }
 
+    .activeSubscription{
+        button{
+            width: 100%;
+            margin-top: 0.85rem;
+            padding: 10px;
+            color: white;
+            background-color: grey;
+            border: none;
+            cursor: pointer;
+        }
+
+        @media screen and (min-width: 768px){            
+            flex-basis: 200px;
+        }
+        
+    }
+
     .suscribeButton{
         width: 80%;
+
+        button{
+            width: 100%;
+            margin-top: 0.85rem;
+            padding: 10px;
+            color: white;
+            background-color: red;
+            border: none;
+            cursor: pointer;
+        }
 
         @media screen and (min-width: 768px){
             flex-basis: 200px;

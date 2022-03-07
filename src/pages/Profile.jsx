@@ -27,8 +27,7 @@ export default function Profile() {
             <div className={styles.profilePlans}>
               <h3>Plans</h3>
               <Plans />
-
-              <button type="button" onClick={() => auth.signOut()}>Sign Out</button>
+              <button className={styles.signOut} type="button" onClick={() => auth.signOut()}>Sign Out</button>
             </div>
           </div>
 
