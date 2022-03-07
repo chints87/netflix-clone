@@ -10,6 +10,8 @@ export default function Plans() {
   const user = useSelector(selectUser);
   const [subscription, setSubscription] = useState(null);
 
+  // Check customers and then in subscription, get info about
+  // the subscription, start and end period
   useEffect(() => {
     db.collection('customers')
       .doc(user.uid)
@@ -21,7 +23,6 @@ export default function Plans() {
             role: subscrb.data().role,
             currentStartPeriod: subscrb.data().current_period_start.seconds,
             currentEndPeriod: subscrb.data().current_period_end.seconds,
-
           });
         });
       });
@@ -85,6 +86,7 @@ export default function Plans() {
           function takes each array with the first element as productID
           and the second as the product data */}
       {Object.entries(products).map(([productId, productData]) => {
+        //
         const currentPackage = productData.name.toLowerCase().includes(
           subscription ? subscription.role : null,
         );
@@ -95,7 +97,8 @@ export default function Plans() {
               <p>{productData.name}</p>
               <p>{productData.description}</p>
             </div>
-            <div className={styles.suscribeButton}>
+            <div className={currentPackage ? styles.activeSubscription : styles.suscribeButton}>
+              {/* This button will work only when the user is an unsuscribed user */}
               <button type="button" onClick={() => !currentPackage && checkoutHandler(productData.prices.priceId)}>
                 {currentPackage ? 'Current Package' : 'Suscribe'}
                 {' '}
