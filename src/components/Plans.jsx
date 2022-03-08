@@ -1,15 +1,20 @@
 /* eslint-disable no-undef */
 import React, { useState, useEffect } from 'react';
+
 import { useSelector } from 'react-redux';
-import styles from '../styles/scss/Plans.module.scss';
+// import { startLoading, stopLoading } from '../features/loadingSlice';
+
 import db from '../firebase';
 import { selectUser } from '../features/userSlice';
+import PlansItem from './PlansItem';
 
 export default function Plans() {
   const [products, setProducts] = useState([]);
   const user = useSelector(selectUser);
+
   const [subscription, setSubscription] = useState(null);
 
+  // const dispatch = useDispatch();
   // Check customers and then in subscription, get info about
   // the subscription, start and end period
   useEffect(() => {
@@ -51,31 +56,33 @@ export default function Plans() {
       });
   }, []);
 
-  const checkoutHandler = async (priceId) => {
-    const docRef = await db
-      .collection('customers')
-      .doc(user.uid)
-      .collection('checkout_sessions')
-      .add({
-        price: priceId,
-        success_url: window.location.origin,
-        cancel_url: window.location.origin,
-      });
+  // const checkoutHandler = async (priceId) => {
+  //   dispatch(startLoading());
+  //   const docRef = await db
+  //     .collection('customers')
+  //     .doc(user.uid)
+  //     .collection('checkout_sessions')
+  //     .add({
+  //       price: priceId,
+  //       success_url: window.location.origin,
+  //       cancel_url: window.location.origin,
+  //     });
+  //   dispatch(stopLoading());
 
-    // Wait for the CheckoutSession to get attached by the extension
-    docRef.onSnapshot((snap) => {
-      const { error, url } = snap.data();
-      if (error) {
-        // Show an error to your customer and
-        // inspect your Cloud Function logs in the Firebase console.
-        alert(`An error occured: ${error.message}`);
-      }
-      if (url) {
-        // Take user to Stripe checkout url
-        window.location.assign(url);
-      }
-    });
-  };
+  //   // Wait for the CheckoutSession to get attached by the extension
+  //   docRef.onSnapshot((snap) => {
+  //     const { error, url } = snap.data();
+  //     if (error) {
+  //       // Show an error to your customer and
+  //       // inspect your Cloud Function logs in the Firebase console.
+  //       alert(`An error occured: ${error.message}`);
+  //     }
+  //     if (url) {
+  //       // Take user to Stripe checkout url
+  //       window.location.assign(url);
+  //     }
+  //   });
+  // };
 
   console.log('Subscription', subscription);
   console.log(products);
@@ -85,28 +92,16 @@ export default function Plans() {
       {/* An array will contain arrays of the products. The map
           function takes each array with the first element as productID
           and the second as the product data */}
-      {Object.entries(products).map(([productId, productData]) => {
-        //
-        const currentPackage = productData.name.toLowerCase().includes(
-          subscription ? subscription.role : null,
-        );
-
-        return (
-          <div key={productId} className={styles.plan}>
-            <div className={styles.productDescription}>
-              <p>{productData.name}</p>
-              <p>{productData.description}</p>
-            </div>
-            <div className={currentPackage ? styles.activeSubscription : styles.suscribeButton}>
-              {/* This button will work only when the user is an unsuscribed user */}
-              <button type="button" onClick={() => !currentPackage && checkoutHandler(productData.prices.priceId)}>
-                {currentPackage ? 'Current Package' : 'Suscribe'}
-                {' '}
-              </button>
-            </div>
-          </div>
-        );
-      })}
+      {Object.entries(products).map(([productId, productData]) => (
+      //
+      // Need to create a new component
+        <PlansItem
+          key={productId}
+          productData={productData}
+          subscription={subscription}
+          user={user}
+        />
+      ))}
 
     </>
 

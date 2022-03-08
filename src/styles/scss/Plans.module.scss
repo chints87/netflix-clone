@@ -32,6 +32,7 @@
     }
 
     .activeSubscription{
+        width: 80%;
         button{
             width: 100%;
             margin-top: 0.85rem;
@@ -42,6 +43,8 @@
             cursor: pointer;
         }
 
+        
+
         @media screen and (min-width: 768px){            
             flex-basis: 200px;
         }
@@ -51,6 +54,13 @@
     .suscribeButton{
         width: 80%;
 
+        .loading{
+            text-align: center;
+            padding: 0.45rem;
+            border: 1px solid rgb(56, 56, 56);
+            margin: 0 auto;
+        }
+
         button{
             width: 100%;
             margin-top: 0.85rem;
@@ -59,7 +69,18 @@
             background-color: red;
             border: none;
             cursor: pointer;
+            opacity: 0.8;
+
+            &:hover{
+                opacity: 1;
+                transition: all 0.3s ease-out;
+                
+            }
         }
+
+        
+
+        
 
         @media screen and (min-width: 768px){
             flex-basis: 200px;

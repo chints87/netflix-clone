@@ -11,16 +11,14 @@ export default function HomeScreen() {
     <div className={styles.homeScreen}>
       <Nav />
       <Banner />
-      { getMovieLists.map((category) => {
-        console.log(category.path);
-        return (
-          <MovieRow
-            categoryTitle={category.title}
-            path={category.path}
-            isLarge={category.isLarge}
-          />
-        );
-      })}
+      { getMovieLists.map((category) => (
+        <MovieRow
+          key={category.path}
+          categoryTitle={category.title}
+          path={category.path}
+          isLarge={category.isLarge}
+        />
+      ))}
     </div>
   );
 }

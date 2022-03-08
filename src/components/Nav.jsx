@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from '../styles/scss/Nav.module.scss';
 
 export default function Nav() {
@@ -23,11 +23,14 @@ export default function Nav() {
 
   return (
     <div className={navBarColor.join(' ')}>
-      <img
-        className={styles.logo}
-        src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png"
-        alt=""
-      />
+      <Link to="/">
+        <img
+          className={styles.logo}
+          src="http://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png"
+          alt="NetFlix Logo"
+        />
+      </Link>
+
       <img
         className={styles.userIcon}
         src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
