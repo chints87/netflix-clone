@@ -57,6 +57,10 @@
   }
 }
 
+.plan .activeSubscription {
+  width: 80%;
+}
+
 .plan .activeSubscription button {
   width: 100%;
   margin-top: 0.85rem;
@@ -86,6 +90,13 @@
   background-color: red;
   border: none;
   cursor: pointer;
+  opacity: 0.8;
+}
+
+.plan .suscribeButton button:hover {
+  opacity: 1;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
 
 @media screen and (min-width: 768px) {

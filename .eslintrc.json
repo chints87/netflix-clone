@@ -4,5 +4,6 @@
         "airbnb/hooks"
     ],    
     "rules": {
+        "react/prop-types" : 0
     }
 }

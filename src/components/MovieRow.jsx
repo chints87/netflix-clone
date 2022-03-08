@@ -22,7 +22,6 @@ export default function MovieRow({ categoryTitle, path, isLarge }) {
 
   /* This is a constant that adds an additional class style if condition is met */
   const moviePoster = [styles.moviePoster, isLarge ? styles.moviePosterHeight : null];
-
   return (
     movieList
       ? (
@@ -30,18 +29,21 @@ export default function MovieRow({ categoryTitle, path, isLarge }) {
           <h1>{categoryTitle}</h1>
           <div className={styles.movies}>
             {/* This condition does not output an image if a link is empty or broken */}
-            {movieList.map((movie) => (
-              (isLarge && movie.poster_path) || (!isLarge && movie.backdrop_path))
+            {movieList.map((movie) => {
+              console.log(movie);
+              return (
+                (isLarge && movie.poster_path) || (!isLarge && movie.backdrop_path))
             && (
-              <div className={styles.movieDetails}>
+              <div key={movie.id} className={styles.movieDetails}>
                 <img
                   className={moviePoster.join(' ')}
                   src={`${imageURL}${isLarge ? movie.poster_path : movie.backdrop_path}`}
                   alt={movie.name}
                 />
-                <p>{movie.name}</p>
+                <p>{movie.name || movie.title}</p>
               </div>
-            ))}
+            );
+            })}
 
           </div>
         </div>
