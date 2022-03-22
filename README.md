@@ -1,7 +1,7 @@
 # Netflix Clone 
 ## Using ReactJS to build front-end; Google firebase as the back-end to develop a Netflix clone; and Stripe as the payment gateway
 
-----
+
 ### Installation
 Clone the Github repository from the following steps:
 ```
@@ -159,3 +159,5 @@ service cloud.firestore {
    to help understand steps taken.
 
 
+### Acknowledgements
+1) Netflix clone guide [https://www.youtube.com/results?search_query=netflix-clone+sonny+sangha]
