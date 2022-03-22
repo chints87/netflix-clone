@@ -38,6 +38,7 @@ function App() {
 
     <div className="App">
       <Routes>
+        {/* Display components based on user state */}
         <Route path="/" element={user ? <HomeScreen /> : <Login />} />
         <Route path="/login" element={user ? <Profile /> : <Login />} />
       </Routes>
