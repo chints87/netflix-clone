@@ -8,15 +8,17 @@ import db from '../firebase';
 import { selectUser } from '../features/userSlice';
 import PlansItem from './PlansItem';
 
+// Retrieve customer subscription, if any, and display
+// product plans and pricing
+
 export default function Plans() {
   const [products, setProducts] = useState([]);
   const user = useSelector(selectUser);
 
   const [subscription, setSubscription] = useState(null);
 
-  // const dispatch = useDispatch();
-  // Check customers and then in subscription, get info about
-  // the subscription, start and end period
+  // Check for customer details in customers collection and then in subscriptions collection
+  // get info about the subscription, start and end period
   useEffect(() => {
     db.collection('customers')
       .doc(user.uid)
@@ -33,6 +35,7 @@ export default function Plans() {
       });
   }, [user.uid]);
 
+  // Obtain price details for all products
   useEffect(() => {
     db.collection('products')
       .where('active', '==', true)
@@ -84,17 +87,27 @@ export default function Plans() {
   //   });
   // };
 
-  console.log('Subscription', subscription);
-  console.log(products);
+  // console.log(subscription);
+  // renewalDate = new Date(subscription.currentEndPeriod * 1000).toLocaleDateString('en-IN');
 
   return (
     <>
+      {subscription ? (
+        <p style={{
+          textTransform: 'uppercase', textAlign: 'center', fontWeight: 'bold', margin: '1.5rem',
+        }}
+        >
+          Renewal Date :
+          {'   '}
+          {new Date(subscription.currentEndPeriod * 1000).toLocaleDateString('en-IN')}
+        </p>
+      )
+        : null }
+
       {/* An array will contain arrays of the products. The map
           function takes each array with the first element as productID
           and the second as the product data */}
       {Object.entries(products).map(([productId, productData]) => (
-      //
-      // Need to create a new component
         <PlansItem
           key={productId}
           productData={productData}

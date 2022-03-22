@@ -3,10 +3,13 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from '../styles/scss/Nav.module.scss';
 
+// The nav bar with menu items at the top of the page
+
 export default function Nav() {
   const [navBar, setNavBar] = useState(false);
   const navigate = useNavigate();
 
+  // On scroll, change nav bar appearance
   const navBarTransition = () => {
     if (window.scrollY > 100) {
       setNavBar(true);
@@ -14,11 +17,15 @@ export default function Nav() {
       setNavBar(false);
     }
   };
+
+  // Add listener for scroll event and trigger navBarTransition when viewport crosses 100vh
   useEffect(() => {
     window.addEventListener('scroll', navBarTransition);
+    // Remove listener on unmounting
     return () => { window.removeEventListener('scroll', navBarTransition); };
   }, []);
 
+  // CSS class for nav bar to add style based on navBarTransition state
   const navBarColor = [styles.navContent, navBar ? styles.navBackgroundColor : null];
 
   return (

@@ -3,6 +3,8 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } f
 import { firebaseApp } from '../firebase';
 import styles from '../styles/scss/SignIn.module.scss';
 
+// Form to add user to database or provide access to user to access app features
+
 export default function SignIn() {
   const emailRef = useRef();
   const passwordRef = useRef();

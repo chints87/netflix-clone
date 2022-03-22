@@ -1,14 +1,17 @@
 # Netflix Clone 
-###### Using ReactJS to build front-end; Google firebase as the back-end to develop a Netflix clone
+###### Using ReactJS to build front-end; Google firebase as the back-end to develop a Netflix clone; and Stripe as the payment gateway
+
 ----
 ### Installation
 Clone the Github repository from the following steps:
 ```
-$git clone https://github.com/chints87/.git *name of folder*
+$git@github.com:chints87/netflix-clone.git *name of folder*
 $cd *name of folder*
 ```
 
-Go to the create folder, View .git folder, go to .git/hooks/pre-commit.sample
+Go to the create folder, View .git folder, go to .git/hooks/pre-commit.sample.
+Add the following code. This will ensure that no commits are made
+directly to the main branch 
 
 ```
 #!C:/Program\ Files/Git/usr/bin/sh.exe
@@ -22,16 +25,15 @@ fi
 
 ```
 
-Add the following code. This will ensure that no commits are made
-directly to the main branch 
-
+## Firebase Setup
 
 1. Go to Firebase
 2. Create a new project
 3. Click on the created new project
 4. Create a web app for this project
 5. Give it a name
-6. Get the config file and add to this a file called firbase.js
+6. Get the config file called firebase.js and it to the src folder
+
 
 ```
 import firebase from 'firebase/compat/app';
@@ -55,10 +57,10 @@ export const firebaseApp = firebase.initializeApp(firebaseConfig);
    REACT_APP when adding variable name to firebase constants
 
 #### Create a firestore database    
-7. Now go to the project in firebase and select firestore database
-8. Start in test mode 
-9. Click Enable 
-8. Add a db connection, see below, back in the firebase.js file in your src file
+8. Now go to the project in firebase and select firestore database
+9. Start in test mode 
+10. Click Enable 
+11. Add a db connection, see below, back in the firebase.js file in your src file
 ```
 // Connect to db
 const db = firebaseApp.firestore();
@@ -71,20 +73,18 @@ export default db;
 
 1. Setup an account
 2. Click on the power button and then click on setting
-3. In the list of options find API.
-4. Click and copy API key. 
-5. Add this API key to .env.local with a prefix
+3. In the list of options find API
+4. Click and copy API key 
+5. Add this API key to the .env.local file with a prefix
    REACT_APP
 
-
-
+---
 ## Setup Stripe for creating subscription plans
 
 1) Setup an account
 2) Make sure you are in test mode
-3) Look where the API keys are located
-4) Create a restricted key, which permissions as required, shown in the firebase stripe extension setup 
-
+3) Click on the Developer tab and then API keys to locate them
+4) Create a restricted key, set permissions as required, shown in the firebase stripe extension setup 
 
 ## Setup Stripe extension on firebase
 [Refer to this link](https://github.com/stripe/stripe-firebase-extensions/blob/master/firestore-stripe-payments/POSTINSTALL.md)
@@ -93,12 +93,12 @@ export default db;
 2) In the menu list, click on extensions
 3) Choose stripe integrations
 4) Enable secret key cloud manager
-5) Before the install, in the setup add Stripe restricted key(details are shown below the input box). Refer to point 4 
-   in 'Setup Stripe....plans'.
+5) Before the install, in the setup add Stripe restricted key(details are shown below the input box on what fields to add
+   and access that should be provided). Refer to point 4 in <u>'Setup Stripe for creating subscription plans'.</u>
 6) Leave secret key for webhook empty
 7) Install stripe.
 
-#### Add rules to your database about what knd of users can access, read and write
+#### Add rules to your firebase database about user authorized access
 ```
 rules_version = '2';
 service cloud.firestore {
@@ -131,8 +131,7 @@ service cloud.firestore {
   }
 }
 ```
-
-### Setup webhook so that changes in stripe can triggers updates in firebase store
+### Setup Webhook so that changes in stripe can triggers updates in firebase store
 
 1) Copy the URL extension from firebase and go to your Stripe account and go to webhooks to add the URL as an endpoint.
 2) Select events that webhook should listen to.
@@ -148,13 +147,16 @@ service cloud.firestore {
    change subscription or cancel plans and add the products that were just created
 
 ### Branding 
-
+1) In Settings, go to Branding.
+2) Select colors according to your brand.
 ### Go to firestore
 
 1) Refresh the database, and you should see the newly created products show up in the firebase db.
 2) Sign up a new user. Refresh the database and you should see the customer collection created 
    with details of this newly created user. 
 
-###
+### React Components
+1) In the component folder, description for each is provided and other comments provided
+   to help understand steps taken.
 
 

@@ -4,6 +4,9 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import db from '../firebase';
 import styles from '../styles/scss/Plans.module.scss';
 
+// For each plan item, if unsuscribed, on clicking takes the user
+// to checkout
+
 export default function PlansItem({ productData, subscription, user }) {
   const [loading, setLoading] = useState(false);
   const currentPackage = productData.name.toLowerCase().includes(
@@ -30,7 +33,6 @@ export default function PlansItem({ productData, subscription, user }) {
         // Show an error to your customer and
         // inspect your Cloud Function logs in the Firebase console.
         // eslint-disable-next-line no-undef
-        alert(`An error occured: ${error.message}`);
         setLoading(false);
       }
       if (url) {

@@ -38,6 +38,11 @@ $breakpoint-tablet: 768px;
         border: none;
         border-radius: 0.25rem;
         cursor: pointer;
+        opacity: 0.8;
+
+        &:hover{
+            opacity: 1;
+        }
     }
 
     .loginBody{
@@ -102,6 +107,11 @@ $breakpoint-tablet: 768px;
                 background-color: red;
                 border: none;
                 cursor: pointer;
+                opacity: 0.8;
+
+                &:hover{
+                    opacity: 1;
+                }
 
                 @media screen and (min-width: $breakpoint-tablet){
                     margin-top: none;

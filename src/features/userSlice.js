@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// Create application wide user state
+
 const initialState = {
   user: null,
 };

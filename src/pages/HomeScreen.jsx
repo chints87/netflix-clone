@@ -5,12 +5,15 @@ import Banner from '../components/Banner';
 import MovieRow from '../components/MovieRow';
 import getMovieLists from '../fetchMovies';
 
+// The home screen displays the Nav bar component
+// and multiple movie row components
+
 export default function HomeScreen() {
-  // Array of api paths
   return (
     <div className={styles.homeScreen}>
       <Nav />
       <Banner />
+      {/* getMovieList is an array that contains different categories and their api path */}
       { getMovieLists.map((category) => (
         <MovieRow
           key={category.path}
