@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import styles from '../styles/scss/Login.module.scss';
 import SignIn from '../components/SignIn';
 
+// Ask user to login or sign up or get started
+// Get started is another path to get the user started
+// and provide free trial
 export default function Login() {
   const [signIn, setSignIn] = useState(null);
   return (

@@ -8,6 +8,9 @@ import Plans from '../components/Plans';
 
 import { selectUser } from '../features/userSlice';
 
+// User Profile with plan details, if subscribed
+// then provide renewal data, and sign out function
+
 export default function Profile() {
   const user = useSelector(selectUser);
   const auth = getAuth(firebaseApp);

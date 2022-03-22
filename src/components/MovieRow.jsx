@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import movieDBInstance from '../movieDB';
 import styles from '../styles/scss/MovieRow.module.scss';
 
-// eslint-disable-next-line react/prop-types
+// Movies are fetched from the path prop and displayed as cards
+
 export default function MovieRow({ categoryTitle, path, isLarge }) {
   /* The state for movieList will be populated after making an API call */
   const [movieList, setMovieList] = useState([]);
@@ -29,10 +30,8 @@ export default function MovieRow({ categoryTitle, path, isLarge }) {
           <h1>{categoryTitle}</h1>
           <div className={styles.movies}>
             {/* This condition does not output an image if a link is empty or broken */}
-            {movieList.map((movie) => {
-              console.log(movie);
-              return (
-                (isLarge && movie.poster_path) || (!isLarge && movie.backdrop_path))
+            {movieList.map((movie) => (
+              (isLarge && movie.poster_path) || (!isLarge && movie.backdrop_path))
             && (
               <div key={movie.id} className={styles.movieDetails}>
                 <img
@@ -42,8 +41,7 @@ export default function MovieRow({ categoryTitle, path, isLarge }) {
                 />
                 <p>{movie.name || movie.title}</p>
               </div>
-            );
-            })}
+            ))}
 
           </div>
         </div>

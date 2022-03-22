@@ -1,4 +1,4 @@
-// This would be added in the process.env
+// Find key in .env.local in the root folder
 const API_KEY = process.env.REACT_APP_MOVIEDB_API_KEY;
 
 // Object containing api paths to fetch different movie genres
