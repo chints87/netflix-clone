@@ -3,6 +3,9 @@ import styles from '../styles/scss/Banner.module.scss';
 import movieDBInstance from '../movieDB';
 import getMovieLists from '../fetchMovies';
 
+// Displays a single movie banner by fetching data from
+// an api and using that data to display a poster and description
+
 export default function Banner() {
   // State to show movie in the banner
   const [movie, setMovie] = useState();
