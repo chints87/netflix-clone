@@ -1,5 +1,5 @@
 # Netflix Clone 
-###### Using ReactJS to build front-end; Google firebase as the back-end to develop a Netflix clone; and Stripe as the payment gateway
+## Using ReactJS to build front-end; Google firebase as the back-end to develop a Netflix clone; and Stripe as the payment gateway
 
 ----
 ### Installation
@@ -69,7 +69,7 @@ export default db;
 
 ```
 
-#### Obtain API key from [MovieDB](https://www.themoviedb.org/)
+## Obtain API key from [MovieDB](https://www.themoviedb.org/)
 
 1. Setup an account
 2. Click on the power button and then click on setting
@@ -78,7 +78,6 @@ export default db;
 5. Add this API key to the .env.local file with a prefix
    REACT_APP
 
----
 ## Setup Stripe for creating subscription plans
 
 1) Setup an account
