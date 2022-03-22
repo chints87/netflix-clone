@@ -160,4 +160,4 @@ service cloud.firestore {
 
 
 ### Acknowledgements
-1) [Netflix clone guide] (https://www.youtube.com/results?search_query=netflix-clone+sonny+sangha)
+1) [Netflix clone guide](https://www.youtube.com/results?search_query=netflix-clone+sonny+sangha)
