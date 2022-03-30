@@ -178,9 +178,9 @@ service cloud.firestore {
 8) Select 'Yes' for "Configure as single-page-app...."
 9) Select 'No' for automatic builds adn deploys with github
 10) Now in your editor and in the project folder build the production app
-   ```
-   npm run build
-   ```
+    ```
+    npm run build
+    ```
 11) Once the build is completed, you will see a build folder in your project directory
 12) Deploy this build to firebase
     ```
