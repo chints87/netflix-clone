@@ -158,6 +158,34 @@ service cloud.firestore {
 1) In the component folder, description for each is provided and other comments provided
    to help understand steps taken.
 
-
+### Build and deploy
+1) Go to the project directory and install firebase tools 
+   ```
+   npm install -g firebase-tools
+   ```
+2) After installing login to your firebase account from the CLI
+  ```
+  firebase login
+  ```
+3) Once logged in, then you will have to create firebase reference to your project
+  ```
+  firebase init
+  ````
+4) Choose the option for 'Hosting: Configure...'
+5) Select 'Use an existing project'
+6) Choose the project folder you created in firebase  
+7) Type 'build' for 'What do you want to use as your public directory'
+8) Select 'Yes' for "Configure as single-page-app...."
+9) Select 'No' for automatic builds adn deploys with github
+10) Now in your editor and in the project folder build the production app
+   ```
+   npm run build
+   ```
+11) Once the build is completed, you will see a build folder in your project directory
+12) Deploy this build to firebase
+    ```
+    firebase deploy
+    ````
+    
 ### Acknowledgements
 1) [Netflix clone guide](https://www.youtube.com/results?search_query=netflix-clone+sonny+sangha)
