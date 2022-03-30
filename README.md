@@ -164,13 +164,13 @@ service cloud.firestore {
    npm install -g firebase-tools
    ```
 2) After installing login to your firebase account from the CLI
-  ```
-  firebase login
-  ```
+   ```
+   firebase login
+   ```
 3) Once logged in, then you will have to create firebase reference to your project
-  ```
-  firebase init
-  ````
+   ```
+   firebase init
+   ````
 4) Choose the option for 'Hosting: Configure...'
 5) Select 'Use an existing project'
 6) Choose the project folder you created in firebase  
